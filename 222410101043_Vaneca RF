@@ -1,0 +1,309 @@
+// See https://aka.ms/new-console-template for more information
+using System.Diagnostics;
+using System.Reflection;
+
+using _vga;
+using _processor;
+using _laptop;
+
+namespace _vga
+{
+    class VGA
+    {
+        public string merk;
+
+        public VGA(string merk)
+        {
+            this.merk = merk;
+        }
+    }
+
+    class Nvidia : VGA
+    {
+        public Nvidia() : base("Nvidia")
+        {
+
+        }
+    }
+
+    class AMD : VGA
+    {
+        public AMD() : base("AMD")
+        {
+
+        }
+    }
+}
+
+
+namespace _processor
+{
+    class Processor
+    {
+        public string merk;
+        public string tipe;
+
+        public Processor(string merk, string tipe)
+        {
+            this.merk = merk;
+            this.tipe = tipe;
+        }
+    }
+
+    class Intel : Processor
+    {
+        public Intel(string tipe) : base("intel", tipe)
+        {
+
+        }
+    }
+
+    class Corei3 : Intel
+    {
+        public Corei3() : base("Corei3")
+        {
+
+        }
+    }
+
+    class Corei5 : Intel
+    {
+        public Corei5() : base("Corei5")
+        {
+
+        }
+    }
+
+    class Corei7 : Intel
+    {
+        public Corei7() : base("Corei7")
+        {
+
+        }
+    }
+    
+    class AMD : Processor
+    {
+        public AMD(string tipe) : base("AMD", tipe)
+        {
+
+        }
+    }
+
+    class Ryzen : AMD
+    {
+        public Ryzen() : base("Ryzen")
+        {
+
+        }
+    }
+
+    class Athlon : AMD
+    {
+        public Athlon() : base("Athlon")
+        {
+
+        }
+    }
+}
+
+
+namespace _laptop
+{
+    class laptop
+    {
+        public string merk;
+        public string tipe;
+        public VGA vga;
+        public Processor processor;
+
+        public virtual void LaptopDinyalakan() 
+        { }
+        public virtual void LaptopDimatikan() 
+        { }
+        public void Ngoding() 
+        { }
+
+        public void BermainGame()
+        { }
+    }
+
+    class asus : laptop
+    {
+        public asus(string tipe, VGA vga, Processor processor)
+        {
+            merk = "ASUS";
+            this.tipe = tipe;
+            this.vga = vga;
+            this.processor = processor;
+        }
+
+        public override void LaptopDinyalakan()
+        {
+            Console.WriteLine($"Laptop {merk} {tipe} menyala");
+        }
+
+        public override void LaptopDimatikan()
+        {
+            Console.WriteLine($"Laptop {merk} {tipe} mati");
+        }
+
+        public void Ngoding()
+        {
+            Console.WriteLine("Ctak Ctak Ctak, error lagi!!");
+        }
+
+        public void BermainGame()
+        {
+            Console.WriteLine("Laptop {merk} {tipe} sedang memainkan game");
+        }
+            
+    }
+
+    class ROG : asus
+    {
+        public ROG(VGA vga, Processor processor) : base("ROG", vga, processor)
+        {
+             
+        }
+    }
+
+    class vivobook : asus
+    {
+        public vivobook(VGA vga, Processor processor) : base("vivobook", vga, processor)
+        {
+
+        }
+    }
+
+    class acer : laptop
+    {
+        public acer(string tipe, VGA vga, Processor processor)
+        {
+            merk = "ACER";
+            this.tipe = tipe;
+            this.vga = vga;
+            this.processor = processor;
+        }
+
+        public override void LaptopDinyalakan()
+        {
+            Console.WriteLine($"Laptop {merk} {tipe} menyala");
+        }
+
+        public override void LaptopDimatikan()
+        {
+            Console.WriteLine($"Laptop {merk} {tipe} mati");
+        }
+
+        public void Ngoding()
+        {
+            Console.WriteLine("Ctak Ctak Ctak, error lagi!!");
+        }
+
+        public void BermainGame()
+        {
+            Console.WriteLine("Laptop {merk} {tipe} sedang memainkan game");
+        }
+    }
+
+    class swift : acer
+    {
+        public swift(VGA vga, Processor processor) : base("swift", vga, processor)
+        {
+
+        }
+    }
+    class predator : acer
+    {
+        public predator(VGA vga, Processor processor) : base("predator", vga, processor)
+        {
+
+        }
+    }
+
+    class lenovo : laptop
+    {
+        public lenovo(string tipe, VGA vga, Processor processor)
+        {
+            merk = "LENOVO";
+            this.tipe = tipe;
+            this.vga =vga;
+            this.processor = processor;
+        }
+
+        public override void LaptopDinyalakan()
+        {
+            Console.WriteLine($"Laptop {merk} {tipe} menyala");
+        }
+
+        public override void LaptopDimatikan()
+        {
+            Console.WriteLine($"Laptop {merk} {tipe} mati");
+        }
+
+        public void Ngoding()
+        {
+            Console.WriteLine("Ctak Ctak Ctak, error lagi!!");
+        }
+
+        public void BermainGame()
+        {
+            Console.WriteLine("Laptop {merk} {tipe} sedang memainkan game");
+        }
+    }
+
+    class ideapad : lenovo
+    {
+        public ideapad(VGA vga, Processor processor) : base("ideapad", vga, processor)
+        {
+
+        }
+    }
+    class legion : acer
+    {
+        public legion(VGA vga, Processor processor) : base("legion", vga, processor)
+        {
+
+        }
+    }
+}
+
+class Program
+{
+    static void Main()
+    {
+        VGA vga_laptop1 = new Nvidia();
+        Processor Processor_laptop1 = new Corei5();
+        laptop laptop1 = new vivobook(vga_laptop1, Processor_laptop1);
+
+        VGA vga_laptop2 = new _vga.AMD();
+        Processor Processor_laptop2 = new Ryzen();
+        laptop laptop2 = new ideapad(vga_laptop2, Processor_laptop2);
+
+        VGA vga_Predator = new _vga.AMD();
+        Processor Processor_Predator = new Corei7();
+        predator Predator = new predator(vga_Predator, Processor_Predator);
+
+
+        //soal1
+        //laptop2.LaptopDinyalakan();
+        //laptop2.LaptopDimatikan();
+
+        //soal2
+        //laptop1.ngoding();
+
+        ////soal3
+        //Console.WriteLine(laptop1.merk);
+        //Console.WriteLine(laptop1.tipe);
+        //Console.WriteLine(laptop1.vga);
+        //Console.WriteLine(laptop1.processor);
+
+        //soal4
+        //Predator.BermainGame();
+
+        ////soal5
+        //laptop acer = new predator(vga_Predator, Processor_Predator);
+        //acer.BermainGame();
+    }
+}
