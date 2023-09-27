@@ -1,6 +1,3 @@
-// See https://aka.ms/new-console-template for more information
-using System.Diagnostics;
-using System.Reflection;
 
 using _vga;
 using _processor;
@@ -121,11 +118,6 @@ namespace _laptop
         { }
         public virtual void LaptopDimatikan() 
         { }
-        public void Ngoding() 
-        { }
-
-        public void BermainGame()
-        { }
     }
 
     class asus : laptop
@@ -147,16 +139,6 @@ namespace _laptop
         {
             Console.WriteLine($"Laptop {merk} {tipe} mati");
         }
-
-        public void Ngoding()
-        {
-            Console.WriteLine("Ctak Ctak Ctak, error lagi!!");
-        }
-
-        public void BermainGame()
-        {
-            Console.WriteLine("Laptop {merk} {tipe} sedang memainkan game");
-        }
             
     }
 
@@ -174,6 +156,11 @@ namespace _laptop
         {
 
         }
+
+        public void Ngoding()
+        {
+            Console.WriteLine("Ctak Ctak Ctak, error lagi!!");
+        }
     }
 
     class acer : laptop
@@ -186,25 +173,6 @@ namespace _laptop
             this.processor = processor;
         }
 
-        public override void LaptopDinyalakan()
-        {
-            Console.WriteLine($"Laptop {merk} {tipe} menyala");
-        }
-
-        public override void LaptopDimatikan()
-        {
-            Console.WriteLine($"Laptop {merk} {tipe} mati");
-        }
-
-        public void Ngoding()
-        {
-            Console.WriteLine("Ctak Ctak Ctak, error lagi!!");
-        }
-
-        public void BermainGame()
-        {
-            Console.WriteLine("Laptop {merk} {tipe} sedang memainkan game");
-        }
     }
 
     class swift : acer
@@ -220,6 +188,11 @@ namespace _laptop
         {
 
         }
+
+        public void BermainGame()
+        {
+            Console.WriteLine($"Laptop {merk} {tipe} sedang memainkan game");
+        }
     }
 
     class lenovo : laptop
@@ -230,26 +203,6 @@ namespace _laptop
             this.tipe = tipe;
             this.vga =vga;
             this.processor = processor;
-        }
-
-        public override void LaptopDinyalakan()
-        {
-            Console.WriteLine($"Laptop {merk} {tipe} menyala");
-        }
-
-        public override void LaptopDimatikan()
-        {
-            Console.WriteLine($"Laptop {merk} {tipe} mati");
-        }
-
-        public void Ngoding()
-        {
-            Console.WriteLine("Ctak Ctak Ctak, error lagi!!");
-        }
-
-        public void BermainGame()
-        {
-            Console.WriteLine("Laptop {merk} {tipe} sedang memainkan game");
         }
     }
 
@@ -286,24 +239,25 @@ class Program
         predator Predator = new predator(vga_Predator, Processor_Predator);
 
 
-        //soal1
+        ////soal1
         //laptop2.LaptopDinyalakan();
         //laptop2.LaptopDimatikan();
 
-        //soal2
-        //laptop1.ngoding();
+        ////soal2
+        //laptop1.Ngoding();
 
         ////soal3
         //Console.WriteLine(laptop1.merk);
         //Console.WriteLine(laptop1.tipe);
-        //Console.WriteLine(laptop1.vga);
-        //Console.WriteLine(laptop1.processor);
+        //Console.WriteLine(laptop1.vga.merk);
+        //Console.WriteLine(laptop1.processor.merk);
+        //Console.WriteLine(laptop1.processor.tipe);
 
-        //soal4
+        ////soal4
         //Predator.BermainGame();
 
-        ////soal5
-        //laptop acer = new predator(vga_Predator, Processor_Predator);
-        //acer.BermainGame();
+        //soal5
+        laptop acer = new predator(vga_Predator, Processor_Predator);
+        acer.BermainGame();
     }
 }
